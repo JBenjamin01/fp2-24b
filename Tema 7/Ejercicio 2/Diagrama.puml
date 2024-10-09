@@ -1,0 +1,51 @@
+@startuml Diagrama
+class Reino {
+    - nombre: String
+    - batallasGanadas: int
+    + Reino(nombre: String)
+    + agregarVictoria(): void
+}
+
+class Soldado {
+    - tipo: String
+    - vida: int
+    + Soldado(tipo: String, vida: int)
+}
+
+class Arquero extends Soldado {
+    + Arquero(): void
+}
+
+class Espadachin extends Soldado {
+    + Espadachin(): void
+}
+
+class Caballero extends Soldado {
+    + Caballero(): void
+}
+
+class Ejercicio2 {
+    - soldado1: Soldado
+    - soldado2: Soldado
+    - ganador: Reino
+    + Batalla(s1: Soldado, s2: Soldado)
+    + determinarGanador(): Reino
+}
+
+class Guerra {
+    - reino1: Reino
+    - reino2: Reino
+    - batallas: List<Batalla>
+    + Guerra(reino1: Reino, reino2: Reino)
+    + iniciar(): void
+    + determinarGanadorFinal(): Reino
+}
+
+Reino --> Ejercicio2 : participa en
+Reino --> Guerra : participa en
+Soldado <|-- Arquero
+Soldado <|-- Espadachin
+Soldado <|-- Caballero
+Guerra --> Ejercicio2 : tiene
+Ejercicio2 --> Soldado : enfrenta
+@enduml

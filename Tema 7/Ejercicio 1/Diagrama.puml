@@ -1,0 +1,17 @@
+@startuml Diagrama
+class Soldado {
+    - String nombre
+    - int nivelVida
+    - char columna
+    - int fila
+    + Soldado(String nombre, char columna, int fila)
+    - int generarNivelVida()
+    + String toString()
+}
+
+class Main {
+    + void main(String[] args)
+}
+
+Main --> Soldado : 
+@enduml
