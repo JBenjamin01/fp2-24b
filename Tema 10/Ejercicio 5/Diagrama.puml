@@ -1,0 +1,33 @@
+@startuml Diagrama
+class Fraccion {
+    - int numerador
+    - int denominador
+
+    + Fraccion()
+    + Fraccion(Fraccion f)
+    + Fraccion(int numerador, int denominador)
+
+    + int getNumerador()
+    + int getDenominador()
+
+    + void setNumerador(int numerador)
+    + void setDenominador(int denominador)
+
+    + String mostrarFraccion()
+    + String mostrarDecimal()
+
+    + Fraccion sumar(Fraccion f)
+    + Fraccion restar(Fraccion f)
+    + Fraccion multiplicar(Fraccion f)
+    + Fraccion dividir(Fraccion f)
+    + Fraccion simplificar()
+
+    - int mcd(int a, int b)
+}
+
+class Main {
+    + static void main(String[] args)
+}
+
+Fraccion <|-- Main : utiliza
+@enduml

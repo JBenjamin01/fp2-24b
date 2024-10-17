@@ -1,0 +1,20 @@
+@startuml Diagrama
+
+class Coordenada {
+    -int x
+    -int y
+    +Coordenada(int x, int y)
+    +int getX()
+    +int getY()
+    +double calcularDistancia2(int x2, int y2)
+    +double calcularDistancia3(Coordenada otra)
+}
+
+class Main {
+    +static double calcularDistancia1(Coordenada c1, Coordenada c2)
+    +static void main(String[] args)
+}
+
+Coordenada  <--  Main : utiliza
+
+@enduml

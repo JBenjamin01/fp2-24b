@@ -1,0 +1,38 @@
+@startuml Diagrama
+class Imaginario {
+    - double real
+    - double imaginario
+    
+    + Imaginario()
+    + Imaginario(double real)
+    + Imaginario(double real, double imaginario)
+    
+    + double getReal() : double
+    + double getImaginario() : double
+    + void setReal(double real)
+    + void setImaginario(double imaginario)
+    
+    + String formato1() : String
+    + String formato2() : String
+    
+    + Imaginario sumar(Imaginario i) : Imaginario
+    + Imaginario restar(Imaginario i) : Imaginario
+    + Imaginario multiplicar(Imaginario i) : Imaginario
+    
+    + static Imaginario sumar(Imaginario i1, Imaginario i2) : Imaginario
+    + static Imaginario restar(Imaginario i1, Imaginario i2) : Imaginario
+    + static Imaginario multiplicar(Imaginario i1, Imaginario i2) : Imaginario
+    
+    + double modulo() : double
+    + Imaginario conjugado() : Imaginario
+}
+
+class Main {
+    + static void main(String[] args)
+    + static Imaginario sumar(Imaginario i1, Imaginario i2)
+    + static Imaginario restar(Imaginario i1, Imaginario i2)
+    + static Imaginario multiplicar(Imaginario i1, Imaginario i2)
+}
+
+Main --> Imaginario : "Utiliza"
+@enduml
