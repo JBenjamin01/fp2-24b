@@ -1,0 +1,36 @@
+@startuml Diagrama
+
+class Soldado {
+    - String nombre
+    - int puntosVida
+    - int fila
+    - char columna
+    
+    + Soldado(String nombre, int puntosVida, int fila, char columna)
+    + void setNombre(String nombre)
+    + void setPuntosVida(int puntosVida)
+    + void setFila(int fila)
+    + void setColumna(char columna)
+    + String getNombre()
+    + int getPuntosVida()
+    + int getFila()
+    + char getColumna()
+}
+
+class VideoJuego4 {
+    + static void main(String[] args)
+    + static void inicializarTablero(ArrayList<ArrayList<Soldado>> tablero)
+    + static void inicializarEjercitos(ArrayList<Soldado> ejercito1, ArrayList<Soldado> ejercito2, ArrayList<ArrayList<Soldado>> tablero)
+    + static void mostrarTablero(ArrayList<ArrayList<Soldado>> tablero, ArrayList<Soldado> ejercito1, ArrayList<Soldado> ejercito2)
+    + static void mostrarDatosEjercitos(ArrayList<Soldado> ejercito1, ArrayList<Soldado> ejercito2)
+    + static Soldado obtenerSoldadoMayorVida(ArrayList<Soldado> ejercito)
+    + static void mostrarDatosSoldado(Soldado soldado)
+    + static void ordenamientoInsertionSort(ArrayList<Soldado> ejercito)
+    + static void ordenamientoBubbleSort(ArrayList<Soldado> ejercito)
+    + static void mostrarRanking(ArrayList<Soldado> ejercito, String ejercitoNombre)
+    + static String determinarGanador(ArrayList<Soldado> ejercito1, ArrayList<Soldado> ejercito2)
+}
+
+VideoJuego4 --> Soldado : utiliza
+
+@enduml
