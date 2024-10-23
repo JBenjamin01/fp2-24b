@@ -10,13 +10,12 @@ public class Empleado {
         this.edad = edad;
         contadorEmpleados++;
     }
-
     public Empleado(String nombre, int edad) {
         this.nombre = nombre;
         this.apellido = "";
         this.edad = edad;
+        contadorEmpleados++;
     }
-
     public String getNombre() {
         return nombre;
     }
