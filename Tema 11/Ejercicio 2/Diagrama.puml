@@ -1,0 +1,18 @@
+@startuml Diagrama
+class Main {
+    +main(String[] args) : void
+    -jarras : ArrayList<PennyJar>
+}
+
+class PennyJar {
+    +GOAL : int = 10000
+    -allPennies : int = 0
+    -pennies : int = 0
+    +addPenny() : void
+    +getPennies() : int
+    +getAllPennies() : int
+}
+
+Main --> PennyJar : "utiliza"
+
+@enduml

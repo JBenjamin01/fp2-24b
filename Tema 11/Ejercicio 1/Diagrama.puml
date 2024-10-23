@@ -1,0 +1,23 @@
+@startuml Diagrama
+
+class Main {
+    +main(String[] args)
+}
+
+class Empleado {
+    -String nombre
+    -String apellido
+    -int edad
+    -static int contadorEmpleados
+    +Empleado(String nombre, String apellido, int edad)
+    +Empleado(String nombre, int edad)
+    +getNombre(): String
+    +getApellido(): String
+    +getEdad(): int
+    +static getContadorEmpleados(): int
+}
+
+Main --> Empleado : crea
+Empleado --> Empleado : contadorEmpleados
+
+@enduml
