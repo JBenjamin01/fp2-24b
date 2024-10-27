@@ -67,7 +67,7 @@ public class VideoJuego {
 
                 String nombre = "Soldado" + (i + 1) + "X" + (j + 1);
                 int puntosVida = (int) (Math.random() * 5) + 1;
-                Soldado soldado = new Soldado(nombre, puntosVida, fila, (char) ('A' + columna));
+                Soldado soldado = new Soldado(nombre, puntosVida, fila + 1, (char) ('A' + columna));
 
                 if (i == 0) {
                     e1.add(soldado);
