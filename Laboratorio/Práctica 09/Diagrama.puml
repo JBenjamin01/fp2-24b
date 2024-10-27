@@ -1,0 +1,49 @@
+@startuml Diagrama
+class Soldado {
+    - String nombre
+    - int puntosVida
+    - int fila
+    - char columna
+    - int nivelAtaque
+    - int nivelDefensa
+    - int velocidad
+    - String actitud
+    - boolean vive
+    --
+    + Soldado(String nombre, int puntosVida, int fila, char columna, int nivelAtaque, int nivelDefensa)
+    + Soldado(String nombre, int puntosVida, int fila, char columna)
+    + Soldado(String nombre)
+    + Soldado()
+    --
+    + int getPuntosVida()
+    + int getNivelAtaque()
+    + int getNivelDefensa()
+    + int getVelocidad()
+    + String getActitud()
+    + boolean isVivo()
+    + void atacar()
+    + void defender()
+    + void huir()
+    + void avanzar()
+    + void retroceder()
+    + void serAtacado(int daño)
+    + void recibirAtaque(int daño)
+    + void morir()
+    + String toString()
+}
+
+class VideoJuego {
+    + void main(String[] args)
+    + void inicializarTablero(ArrayList<ArrayList<Soldado>> tablero)
+    + void inicializarEjercitos(ArrayList<Soldado> e1, ArrayList<Soldado> e2, ArrayList<ArrayList<Soldado>> tablero)
+    + void mostrarTablero(ArrayList<ArrayList<Soldado>> tablero, ArrayList<Soldado> e1, ArrayList<Soldado> e2)
+    + void mostrarDatosEjercito(ArrayList<Soldado> ejercito)
+    + Soldado obtenerSoldadoMayorVida(ArrayList<Soldado> ejercito)
+    + double calcularPromedioVida(ArrayList<Soldado> ejercito)
+    + void ordenamientoInsertionSort(ArrayList<Soldado> ejercito)
+    + void ordenamientoBubbleSort(ArrayList<Soldado> ejercito)
+    + String determinarGanador(ArrayList<Soldado> e1, ArrayList<Soldado> e2)
+}
+
+VideoJuego "1" --> "0..*" Soldado : Utiliza
+@enduml
