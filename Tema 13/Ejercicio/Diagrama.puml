@@ -1,0 +1,35 @@
+@startuml Diagrama
+class Person {
+    -name : String
+    +Person()
+    +Person(n : String)
+    +getName() : String
+    +display() : void
+}
+
+class Employee {
+    -id : int
+    +Employee()
+    +Employee(n : String, cod : int)
+    +display() : void
+}
+
+class FullTime {
+    -salary : double
+    +FullTime()
+    +FullTime(n : String, cod : int, s : double)
+    +display() : void
+}
+
+class Main {
+    +main(args : String[]) : void
+}
+
+Person <|-- Employee
+Employee <|-- FullTime
+
+Main --> Person
+Main --> Employee
+Main --> FullTime
+
+@enduml

@@ -14,15 +14,12 @@ public class Auto{
     public String getMarca(){
         return marca;
     }
-    
     public String getPlaca(){
         return placa;
     }
-    
     public double getPrecio(){
         return precio;
     }
-    
     public int getAño(){
         return año;
     }

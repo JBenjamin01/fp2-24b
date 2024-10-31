@@ -1,0 +1,59 @@
+@startuml Diagrama
+
+class Auto {
+    -String marca
+    -String placa
+    -double precio
+    -int año
+    +Auto(String marca, String placa, double precio, int año)
+    +getMarca(): String
+    +getPlaca(): String
+    +getPrecio(): double
+    +getAño(): int
+    +toString(): String
+}
+
+class Vendedor {
+    -String nombre
+    -String direccion
+    -String telefono
+    -double ventas
+    +Vendedor(String nombre, String direccion, String telefono)
+    +getNombre(): String
+    +getDireccion(): String
+    +getTelefono(): String
+    +registrarVenta(double monto)
+    +getVentas(): double
+    +toString(): String
+}
+
+class Gerente {
+    -String nombre
+    -String telefono
+    -double salario
+    +Gerente(String nombre, String telefono, double salario)
+    +toString(): String
+}
+
+class Concesionario {
+    -String nombreEmpresa
+    -Gerente elGerente
+    -ArrayList<Vendedor> personal
+    -ArrayList<Auto> autos
+    +Concesionario(String nombre, Gerente gerente)
+    +addAuto(Auto auto)
+    +addVendedor(Vendedor vendedor)
+    +imprimirEstatus(): void
+}
+
+class AplicacionConcesionario {
+    +main(String[] args)
+    +menu(Concesionario concesionario)
+    +añadirVendedor(Concesionario concesionario, Scanner sc)
+    +anadirAuto(Concesionario concesionario, Scanner sc)
+}
+
+AplicacionConcesionario --> Concesionario
+Concesionario "0..*" o-- "1" Gerente
+Concesionario "0..*" o-- "0..*" Vendedor
+Concesionario "1" *-- "0..*" Auto

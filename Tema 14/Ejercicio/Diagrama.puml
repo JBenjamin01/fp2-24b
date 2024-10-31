@@ -1,0 +1,72 @@
+@startuml Diagrama
+
+class AplicacionConcesionario {
+    +main() : void
+    +menu(concesionario: Concesionario) : void
+    +añadirVendedor(concesionario: Concesionario, sc: Scanner) : void
+    +anadirAuto(concesionario: Concesionario, sc: Scanner) : void
+}
+
+class Concesionario {
+    -nombreEmpresa : String
+    -elGerente : Gerente
+    -personal : ArrayList<Vendedor>
+    -autos : ArrayList<Auto>
+
+    +Concesionario(nombre : String, gerente : Gerente)
+    +addAuto(a : Auto) : void
+    +addVendedor(ven : Vendedor) : void
+    +imprimirEstatus() : void
+}
+
+class Gerente {
+    -salario : double
+
+    +Gerente(nombre : String, telefono : String, salario : double)
+    +getSalario() : double
+    +toString() : String
+}
+
+class Vendedor {
+    -ventas : double
+    -direccion : String
+
+    +Vendedor(nombre : String, direccion : String, telefono : String)
+    +getDireccion() : String
+    +registrarVenta(monto : double) : void
+    +getVentas() : double
+    +toString() : String
+}
+
+class Auto {
+    -marca : String
+    -placa : String
+    -precio : double
+    -año : int
+
+    +Auto(marca : String, placa : String, precio : double, año : int)
+    +getMarca() : String
+    +getPlaca() : String
+    +getPrecio() : double
+    +getAño() : int
+    +toString() : String
+}
+
+class Trabajador {
+    -nombre : String
+    -telefono : String
+
+    +Trabajador(nombre : String, telefono : String)
+    +getNombre() : String
+    +getTelefono() : String
+    +toString() : String
+}
+
+AplicacionConcesionario ..> Concesionario : utiliza
+Concesionario "0..*" o-- "1" Gerente
+Concesionario "1" *-- "0..*" Auto 
+Concesionario "0..*" o-- "0..*" Vendedor
+Trabajador <|-- Gerente
+Trabajador <|-- Vendedor
+
+@enduml

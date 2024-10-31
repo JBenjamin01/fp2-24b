@@ -17,6 +17,7 @@ public class Concesionario {
         personal.add(vendedor);
     }
     public void imprimirEstatus(){
+        System.out.println();
         System.out.println("Nombre de la empresa: " + nombreEmpresa);
         System.out.println("Gerente:\n" + elGerente);
 
@@ -28,6 +29,7 @@ public class Concesionario {
         System.out.println("\nPersonal del concesionario:");
         for(Vendedor vendedor : personal){
             System.out.println("- " + vendedor);
-        } 
+        }
+        System.out.println();
     }
 }

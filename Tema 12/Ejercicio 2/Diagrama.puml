@@ -1,0 +1,29 @@
+@startuml Diagrama
+
+class Estudiante {
+    -int numLista
+    -String nombre
+    -Direccion domicilio
+    +Estudiante(int numLista, String nombre, Direccion domicilio)
+    +mostrarDatos(): void
+}
+
+class Direccion {
+    -String calle
+    -String ciudad
+    -String region
+    -String pais
+    +Direccion()
+    +Direccion(String calle, String ciudad, String region, String pais)
+    +toString(): String
+}
+
+class Main {
+    +main(String[] args)
+}
+
+Estudiante "0..*" o-- "1" Direccion : Agregación
+
+Main --> Estudiante
+Main --> Direccion
+@enduml
