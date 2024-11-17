@@ -1,0 +1,35 @@
+@startuml Diagrama
+
+class Triangulo {
+    - double base
+    - double altura
+    + Triangulo(double base, double altura)
+    + double calcularArea()
+    + String toString()
+}
+
+class Rectangulo {
+    - double largo
+    - double ancho
+    + Rectangulo(double largo, double ancho)
+    + double calcularArea()
+    + String toString()
+}
+
+class Circulo {
+    - double radio
+    + Circulo(double radio)
+    + double calcularArea()
+    + String toString()
+}
+
+class Main {
+    {static} + main(String[] args)
+}
+
+Main --> "1" Object : usa como referencia de tipo
+Object <|-- Triangulo
+Object <|-- Rectangulo
+Object <|-- Circulo
+
+@enduml

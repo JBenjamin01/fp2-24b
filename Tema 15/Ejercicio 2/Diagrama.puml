@@ -1,0 +1,43 @@
+@startuml Diagrama
+class Figura {
+    +calcularArea() : double
+    +toString() : String
+}
+
+class Triangulo {
+    -base : double
+    -altura : double
+    +Triangulo(base : double, altura : double)
+    +calcularArea() : double
+    +toString() : String
+}
+
+class Rectangulo {
+    -largo : double
+    -ancho : double
+    +Rectangulo(largo : double, ancho : double)
+    +calcularArea() : double
+    +toString() : String
+}
+
+class Circulo {
+    -radio : double
+    +Circulo(radio : double)
+    +calcularArea() : double
+    +toString() : String
+}
+
+class Main {
+    +main(args : String[]) : void
+}
+
+Figura <|-- Triangulo
+Figura <|-- Rectangulo
+Figura <|-- Circulo
+
+Main ..> Figura
+Main ..> Triangulo
+Main ..> Rectangulo
+Main ..> Circulo
+
+@enduml
