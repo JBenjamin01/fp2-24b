@@ -1,0 +1,89 @@
+@startuml Diagrama UML
+
+class Soldado {
+    +MAX_SOLDADOS_POR_EJERCITO : int
+    +totalSoldadosCreados : int
+    +soldadosEjercito1 : int
+    +soldadosEjercito2 : int
+    -nombre : String
+    -puntosVida : int
+    -fila : int
+    -columna : char
+    -nivelAtaque : int
+    -nivelDefensa : int
+    -velocidad : int
+    -actitud : String
+    -vive : boolean
+    -ejercito : int
+
+    +Soldado(nombre: String, puntosVida: int, fila: int, columna: char, nivelAtaque: int, nivelDefensa: int, ejercito: int)
+    +Soldado(nombre: String, puntosVida: int, fila: int, columna: char, ejercito: int)
+    +Soldado(nombre: String, puntosVida: int, ejercito: int)
+
+    +getNombre() : String
+    +getFila() : int
+    +getColumna() : char
+    +getPuntosVida() : int
+    +getNivelAtaque() : int
+    +getNivelDefensa() : int
+    +getVelocidad() : int
+    +getActitud() : String
+    +isVivo() : boolean
+    +getEjercito() : int
+
+    +setFila(fila: int) : void
+    +setColumna(columna: char) : void
+    +setPuntosVida(puntosVida: int) : void
+    +setNivelAtaque(nivelAtaque: int) : void
+    +setNivelDefensa(nivelDefensa: int) : void
+    +setEjercito(ejercito: int) : void
+
+    +atacar() : void
+    +defender() : void
+    +huir() : void
+    +avanzar() : void
+    +retroceder() : void
+    +serAtacado(daño: int) : void
+    +recibirAtaque(daño: int) : void
+    +morir() : void
+
+    +toString() : String
+}
+
+class VideoJuego {
+    +main(String[] args)
+    
+    +void inicializarTablero(ArrayList<ArrayList<Soldado>> tablero)
+    +void inicializarEjercitos(ArrayList<Soldado> e1, ArrayList<Soldado> e2, ArrayList<ArrayList<Soldado>> tablero)
+    
+    +void colocarEjercitosEnTablero(ArrayList<Soldado> e1, ArrayList<Soldado> e2, ArrayList<ArrayList<Soldado>> tablero)
+    +void mostrarTablero(ArrayList<ArrayList<Soldado>> tablero, ArrayList<Soldado> e1, ArrayList<Soldado> e2)
+    +void mostrarDatosEjercito(ArrayList<Soldado> ejercito)
+    +boolean juego(ArrayList<ArrayList<Soldado>> tablero, ArrayList<Soldado> e1, ArrayList<Soldado> e2)
+
+    +Soldado buscarSoldado(ArrayList<ArrayList<Soldado>> tablero, String coord)
+    +boolean moverSoldado(Soldado soldado, char direccion, ArrayList<ArrayList<Soldado>> tablero, ArrayList<Soldado> ejercitoAliado, ArrayList<Soldado> ejercitoEnemigo)
+    +boolean verificarMovimientoValido(int fila, int columna, ArrayList<ArrayList<Soldado>> tablero)
+    +void batalla(Soldado s1, Soldado s2, ArrayList<Soldado> ejercitoAliado, ArrayList<Soldado> ejercitoEnemigo, ArrayList<ArrayList<Soldado>> tablero)
+    
+    +void juegoRapido()
+    +void juegoPersonalizado()
+
+    +void crearSoldado(ArrayList<Soldado> ejercito, ArrayList<ArrayList<Soldado>> tablero, int ejercitoNum)
+    +void eliminarSoldado(ArrayList<Soldado> ejercito, ArrayList<ArrayList<Soldado>> tablero, int ejercitoNum)
+    +void clonarSoldado(ArrayList<Soldado> ejercito, ArrayList<ArrayList<Soldado>> tablero, int ejercitoNum)
+    +void modificarSoldado(ArrayList<Soldado> ejercito)
+    +void compararSoldados(ArrayList<Soldado> ejercito)
+    +boolean compararAtributos(Soldado s1, Soldado s2)
+    +void intercambiarSoldados(ArrayList<Soldado> ejercito)
+    +void intercambiarPosiciones(Soldado s1, Soldado s2)
+    +void verSoldado(ArrayList<Soldado> ejercito)
+    +void verEjercito(ArrayList<Soldado> ejercito)
+    +void sumarNiveles(ArrayList<Soldado> ejercito)
+
+    +void mostrarCantidadDeSoldados()
+}
+
+VideoJuego --> "0..*" Soldado : .   Contiene
+
+@enduml
