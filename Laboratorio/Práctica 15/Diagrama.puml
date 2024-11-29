@@ -1,0 +1,107 @@
+@startuml Diagrama UML
+class Reino {
+    - String nombre
+    - static ArrayList<String> reinos
+    - ArrayList<Ejercito> ejercitos
+    - Set<String> posicionesOcupadas
+    --
+    + Reino()
+    - generarNombre(): void
+    - generarEjercitos(): void
+    + getNombre(): String
+    + getEjercitos(): ArrayList<Ejercito>
+    + getTotalSoldadosReino(): int
+    + getTotalVidaReino(): int
+    + contains() : boolean
+    + mostrarInformacion() : void
+}
+
+class Ejercito {
+    - int numEjercito
+    - String reino
+    - ArrayList<Soldado> soldados
+    - int fila
+    - char columna
+    --
+    + Ejercito(String reino, int numEjercito, int fila, char columna)
+    + addSoldado(Soldado soldado): void
+    + getTotalSoldadosEjercito(): int
+    + getTotalVidaEjercito(): int
+    + getReino(): String
+    + getFila(): int
+    + getColumna(): char
+    + getCantidadSoldados(): int
+    + getVidaTotal(): int
+    - generarSoldados(): void
+    + mostrarEjercito(): void
+    + aplicarBonus(String tipoTerritorio)
+}
+
+class Soldado {
+    - String nombre
+    - int nivelVida
+    - int fila
+    - char columna
+    - int nivelAtaque
+    - int nivelDefensa
+    - int velocidad
+    - String actitud
+    - boolean vive
+    - int ejercito
+    --
+    + Soldado(String nombre, int nivelVida, int fila, char columna, int nivelAtaque, int nivelDefensa, int ejercito)
+    + Soldado(String nombre, int nivelVida, int fila, char columna, int ejercito)
+    + Soldado(String nombre, int nivelVida, int ejercito)
+    + getNombre(): String
+    + getFila(): int
+    + getColumna(): char
+    + getNivelVida(): int
+    + getNivelAtaque(): int
+    + getNivelDefensa(): int
+    + getVelocidad(): int
+    + getActitud(): String
+    + isVivo(): boolean
+    + getEjercito(): int
+    + setFila(int fila): void
+    + setColumna(char columna): void
+    + setNivelVida(int nivelVida): void
+    + setNivelAtaque(int nivelAtaque): void
+    + setNivelDefensa(int nivelDefensa): void
+    + setEjercito(int ejercito): void
+    + atacar(): void
+    + defender(): void
+    + huir(): void
+    + avanzar(): void
+    + retroceder(): void
+    + serAtacado(int daño): void
+    + recibirAtaque(int daño): void
+    + morir(): void
+}
+
+class Mapa {
+    - String[] territorios
+    - String territorio
+    - ArrayList<ArrayList<Ejercito>> tablero
+    - Reino r1
+    - Reino r2
+    --
+    + Mapa(Reino r1, Reino r2)
+    + generarTerritorio(): void
+    + getTerritorio(): String
+    + inicializarTablero(): void
+    + colocarEjercitos(): void
+    + mostrarMapa(): void
+}
+
+class VideoJuego {
+    --
+    + main(String[] args): void
+    + mostrarMetricasVencedor(Reino r1, Reino r2): void
+}
+
+Reino "1" o-- "0..*" Ejercito
+Ejercito "1" o-- "0..*" Soldado
+Mapa "1" o-- "0..*" Reino
+VideoJuego "1" *-- "1" Mapa
+VideoJuego "1" o-- "0..*" Reino
+@enduml
