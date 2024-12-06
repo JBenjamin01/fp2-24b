@@ -1,0 +1,114 @@
+@startuml Diagrama
+
+class Soldado {
+    + static final int MAX_SOLDADOS_POR_EJERCITO
+    + static int totalSoldadosCreados
+    + static int soldadosEjercito1
+    + static int soldadosEjercito2
+    - String nombre
+    - int nivelVida
+    - int fila
+    - char columna
+    - int nivelAtaque
+    - int nivelDefensa
+    - int velocidad
+    - String actitud
+    - boolean vive
+    - int ejercito
+    + Soldado(String, int, int, char, int, int, int)
+    + Soldado(String, int, int, char, int)
+    + Soldado(String, int, int)
+    + getNombre() : String
+    + getFila() : int
+    + getColumna() : char
+    + getNivelVida() : int
+    + getNivelAtaque() : int
+    + getNivelDefensa() : int
+    + getVelocidad() : int
+    + getActitud() : String
+    + isVivo() : boolean
+    + getEjercito() : int
+    + setFila(int)
+    + setColumna(char)
+    + setNivelVida(int)
+    + setNivelAtaque(int)
+    + setNivelDefensa(int)
+    + setEjercito(int)
+    + atacar()
+    + defender()
+    + huir()
+    + avanzar()
+    + retroceder()
+    + serAtacado(int)
+    - recibirAtaque(int)
+    - morir()
+    + toString() : String
+}
+
+class Caballero {
+    - boolean montado
+    - String arma
+    + Caballero(String, int, int, char, int, int, int)
+    + montar()
+    + desmontar()
+    + envestir()
+    + toString() : String
+}
+
+class Espadachin {
+    - double longitudEspada
+    + Espadachin(String, int, int, char, int, int, int, double)
+    + crearMuroDeEscudos()
+    + toString() : String
+}
+
+class Arquero {
+    - int flechasDisponibles
+    + Arquero(String, int, int, char, int, int, int, int)
+    + disparar()
+    + toString() : String
+}
+
+Soldado <|-- Caballero
+Soldado <|-- Espadachin
+Soldado <|-- Arquero
+
+class Ejercito {
+    - int numEjercito
+    - ArrayList<Soldado> soldados
+    - Set<String> posicionesOcupadas
+    + Ejercito(int)
+    + addSoldado(Soldado)
+    + getTotalSoldadosEjercito() : int
+    + getTotalVidaEjercito() : int
+    + getSoldados() : ArrayList<Soldado>
+    + getSoldadoConMayorVida() : Soldado
+    + getPromedioVida() : double
+    + mostrarEjercito()
+    + mostrarRanking()
+}
+
+Ejercito --> Soldado
+
+class Mapa {
+    - ArrayList<ArrayList<String>> tablero
+    - Ejercito ejercito1
+    - Ejercito ejercito2
+    + Mapa(Ejercito, Ejercito)
+    + inicializarTablero()
+    + colocarSoldados()
+    + colocarSoldadosPorEjercito(Ejercito, int)
+    + obtenerTipoSoldado(Soldado) : String
+    + mostrarMapa()
+}
+
+Mapa --> Ejercito
+
+class VideoJuego {
+    + main(String[]) : void
+}
+
+VideoJuego --> Ejercito
+VideoJuego --> Mapa
+
+@enduml
