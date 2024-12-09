@@ -1,0 +1,140 @@
+@startuml Diagrama
+
+class Soldado {
+    - MAX_SOLDADOS_POR_EJERCITO: int = 10
+    - nombre: String
+    - nivelVida: int
+    - fila: int
+    - columna: char
+    - nivelAtaque: int
+    - nivelDefensa: int
+    - velocidad: int
+    - actitud: String
+    - vive: boolean
+    - ejercito: int
+
+    + Soldado(nombre: String, nivelVida: int, fila: int, columna: char, nivelAtaque: int, nivelDefensa: int, ejercito: int)
+    + Soldado(nombre: String, nivelVida: int, fila: int, columna: char, ejercito: int)
+    + Soldado(nombre: String, fila: int, columna: char, ejercito: int)
+    + Soldado(nombre: String, nivelVida: int, ejercito: int)
+
+    + getNombre(): String
+    + getFila(): int
+    + getColumna(): char
+    + getNivelVida(): int
+    + getNivelAtaque(): int
+    + getNivelDefensa(): int
+    + getVelocidad(): int
+    + getActitud(): String
+    + isVivo(): boolean
+    + getEjercito(): int
+
+    - generarNivel(): int
+
+    + setFila(fila: int): void
+    + setColumna(columna: char): void
+    + setNivelVida(nivelVida: int): void
+    + setNivelAtaque(nivelAtaque: int): void
+    + setNivelDefensa(nivelDefensa: int): void
+    + setEjercito(ejercito: int): void
+
+    + atacar(): void
+    + defender(): void
+    + huir(): void
+    + avanzar(): void
+    + retroceder(): void
+    + serAtacado(daño: int): void
+    + recibirAtaque(daño: int): void
+    + morir(): void
+    + toString(): String
+}
+
+class Espadachin {
+    - longitudEspada: double
+
+    + Espadachin(nombre: String, nivelVida: int, fila: int, columna: char, nivelAtaque: int, nivelDefensa: int, ejercito: int, longitudEspada: double)
+    + Espadachin(nombre: String, nivelVida: int, fila: int, columna: char, ejercito: int, longitudEspada: double)
+    + crearMuroDeEscudos(): void
+    + toString(): String
+}
+
+class Caballero {
+    - montado: boolean
+    - arma: String
+
+    + Caballero(nombre: String, nivelVida: int, fila: int, columna: char, nivelAtaque: int, nivelDefensa: int, ejercito: int)
+    + Caballero(nombre: String, nivelVida: int, fila: int, columna: char, ejercito: int)
+    + montar(): void
+    + desmontar(): void
+    + envestir(): void
+    + toString(): String
+}
+
+class Arquero {
+    - flechasDisponibles: int
+
+    + Arquero(nombre: String, nivelVida: int, fila: int, columna: char, nivelAtaque: int, nivelDefensa: int, ejercito: int, flechasDisponibles: int)
+    + Arquero(nombre: String, nivelVida: int, fila: int, columna: char, ejercito: int, flechasDisponibles: int)
+    + getFlechasDisponibles(): int
+    + dispararFlecha(): void
+    + atacar(): void
+}
+
+Soldado <|-- Espadachin
+Soldado <|-- Caballero
+Soldado <|-- Arquero
+
+class Ejercito {
+    - numEjercito: int
+    - soldados: ArrayList<Soldado>
+    - posicionesExistentes: Set<String>
+
+    + Ejercito(numEjercito: int)
+    + addSoldado(soldado: Soldado): void
+    + getTotalSoldados(): int
+    + getSoldados(): ArrayList<Soldado>
+    + mostrarEjercito(): void
+    + isEmpty(): boolean
+    + eliminarSoldado(soldado: Soldado): void
+    + contains(soldado: Soldado): Boolean
+
+    - generarSoldados(): void
+    - crearSoldadoAleatorio(idx: int): Soldado
+    - generarTipoSoldado(): String
+    - generarVida(min: int, max: int): int
+}
+
+class Mapa {
+    - tablero: ArrayList<ArrayList<String>>
+    - ej1: Ejercito
+    - ej2: Ejercito
+
+    + Mapa(ej1: Ejercito, ej2: Ejercito)
+    + getSoldado(fila: int, columna: char): Soldado
+    + limpiarTablero(): void
+    + mostrarMapa(): void
+    + actualizarMapa(ej1: Ejercito, ej2: Ejercito): void
+
+    - inicializarTablero(): void
+    - colocarSoldados(): void
+    - colocarSoldadosPorEjercito(ejercito: Ejercito, numEjercito: int): void
+    - obtenerTipoSoldado(soldado: Soldado): String
+}
+
+class VideoJuego {
+    - main(args: String[]): void
+    - juego(m: Mapa, ej1: Ejercito, ej2: Ejercito): boolean
+    - buscarSoldado(m: Mapa, coord: String): Soldado
+    - moverSoldado(s: Soldado, direccion: char, m: Mapa, ejAliado: Ejercito, ejEnemigo: Ejercito): boolean
+    - verificarMovimientoValido(fila: int, columna: int): boolean
+    - batalla(s: Soldado, sEnemigo: Soldado, ejAliado: Ejercito, ejEnemigo: Ejercito, m: Mapa): void
+}
+
+
+Ejercito "1" *-- "0..*" Soldado : contiene
+Mapa "1" o-- "1" Ejercito : contiene
+
+VideoJuego -> Mapa : usa
+VideoJuego -> Ejercito : usa
+
+@enduml
