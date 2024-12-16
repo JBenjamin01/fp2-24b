@@ -7,8 +7,6 @@ public class EjemploPostgreSQL {
         String password = "301005";
 
         try {
-            Class.forName("org.postgresql.Driver");
-
             Connection conn = DriverManager.getConnection(url, user, password);
             System.out.println("Conexión exitosa a PostgreSQL");
 
